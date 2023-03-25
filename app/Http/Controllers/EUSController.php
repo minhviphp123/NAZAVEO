@@ -16,4 +16,21 @@ class EUSController extends Controller
             'myphone' => $myphone
         ]);
     }
+
+    public function detail($id)
+    {
+        $myphone = [
+            "name" => "ip7pls",
+            "year" => "2016"
+        ];
+        return view('product', [
+            'product' => $myphone[$id] ?? 'unknown product'
+        ]);
+    }
+
+    public function about()
+    {
+        $name = 'minh';
+        return view('about', compact('name'));
+    }
 }
