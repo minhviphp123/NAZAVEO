@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EUSController;
-use App\Http\Controllers\PostsController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,19 +13,9 @@ use App\Http\Controllers\PostsController;
 |
 */
 
-Route::get('/', [
-    EUSController::class,
-    'index'
-]);
-
-Route::get('/about', [
-    EUSController::class,
-    'about'
-]);
-
-// Route::get('/{id}', [
-//     EUSController::class,
-//     'detail'
-// ])->where('id', '[0-9a-zA-Z]+');
-
-Route::get('/posts', [PostsController::class, 'index']);
+Route::get('/', [UserController::class, 'index']);
+Route::get('/go-to-add-user', [UserController::class, 'goToAddUser']);
+Route::get('/go-to-update-user/{id}', [UserController::class, 'goToUpdateUser'])->name('to.users.update');
+Route::post('/add-user', [UserController::class, 'addNewUser']);
+Route::post('/update/{id}', [UserController::class, 'editUser'])->name('users.edit');
+Route::delete('/delete/{id}', [UserController::class, 'deleteUser'])->name('users.destroy');
