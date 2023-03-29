@@ -20,7 +20,3 @@ use App\Http\Controllers\ImageController;
 // Route::post('/add-user', [UserController::class, 'addNewUser']);
 // Route::post('/update/{id}', [UserController::class, 'editUser'])->name('users.edit');
 // Route::delete('/delete/{id}', [UserController::class, 'deleteUser'])->name('users.destroy');
-
-Route::get('/image', [ImageController::class, 'index'])->name('image.index');
-Route::post('/image', [ImageController::class, 'store'])->name('image.store');
-Route::get('/allImages', [ImageController::class, 'show'])->name('image.index');
