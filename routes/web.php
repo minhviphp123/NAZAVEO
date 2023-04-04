@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\UserController;
-use App\Http\Controllers\ImageController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EUSController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,9 @@ use App\Http\Controllers\ImageController;
 |
 */
 
-// Route::get('/', [UserController::class, 'index']);
-// Route::get('/go-to-add-user', [UserController::class, 'goToAddUser']);
-// Route::get('/go-to-update-user/{id}', [UserController::class, 'goToUpdateUser'])->name('to.users.update');
-// Route::post('/add-user', [UserController::class, 'addNewUser']);
-// Route::post('/update/{id}', [UserController::class, 'editUser'])->name('users.edit');
-// Route::delete('/delete/{id}', [UserController::class, 'deleteUser'])->name('users.destroy');
+
+Route::get('/', [EUSController::class, 'index']);
+Route::get('/san-pham', [EUSController::class, 'products']);
+Route::get('/them-san-pham', [EUSController::class, 'getAdd']);
+Route::post('/them-san-pham', [EUSController::class, 'postAdd']);
+Route::get('/download/img', [EUSController::class, 'downloadImg'])->name('download-img');
