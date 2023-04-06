@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header class="container">
+    <header class="">
         {{-- <h1>HEADER</h1> --}}
         <nav class="row  cnavbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand col-2" href="#">Logo</a>
@@ -41,10 +41,13 @@
         <aside>
             Main sidebar
         </aside>
-        <div class="content">
-            @yield('content')
-        </div>
+
     </main>
+
+    <div class="container">
+        <p><img style="width: 200px; height:200px" src='https://bom.so/vCNZiG' alt="be Quyn"></p>
+        @yield('content')
+    </div>
 
     @yield('js')
     @stack('scripts')

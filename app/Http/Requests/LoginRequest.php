@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Validator;
 
 class LoginRequest extends FormRequest
 {
@@ -21,21 +23,43 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
-    {
-        return [
-            'name' => 'required|min:3',
-            'password' => 'required|min:3',
-        ];
-    }
+    // public function rules()
+    // {
+    //     return [
+    //         'name' => 'required|max:225',
+    //         'price' => 'required|numeric',
+    //     ];
+    // }
 
-    public function messages()
-    {
-        return [
-            'name.required' => 'Trường  bắt buộc phải nhập',
-            'name.min' => 'Username sản phảm không được nhỏ hơn  kí tự',
-            'password.required' => 'Trường  bắt buộc phải nhập',
-            'password.min' => 'Password không được nhỏ hơn min kí tự'
-        ];
-    }
+    // public function messages()
+    // {
+    //     return [
+    //         'name.required' => 'Name bắt buộc phải nhập',
+    //         'name.max:225' => 'Name ko dc vượt quá 225 kí tự',
+    //         'price.required' => 'Price bắt buộc phải nhập',
+    //         'price.numeric' => 'Price phải là numeric'
+    //     ];
+    // }
+
+    // public function withValidator(Validator $validator): void
+    // {
+    //     $validator->after(function (Validator $validator) {
+    //         if ($validator->errors()->count() > 0) {
+    //             $validator->errors()->add('msg', 'Something is wrong with fields');
+    //         }
+    //     });
+    // }
+
+    // public function prepareForValidation()
+    // {
+    //     $this->merge([
+    //         "create_at" => date('Y-m-d H:i:s')
+    //     ]);
+    // }
+
+    // public function failedAuthorization()
+    // {
+    //     // throw new AuthorizationException('del co quyen tury cap');\
+    //     echo 1;
+    // }
 }
