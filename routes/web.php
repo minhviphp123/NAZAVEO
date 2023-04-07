@@ -15,17 +15,6 @@ use App\Http\Controllers\EUSController;
 |
 */
 
-
-Route::get('/', [EUSController::class, 'index']);
-Route::get('/san-pham', [EUSController::class, 'products']);
-Route::get('/them-san-pham', [EUSController::class, 'getAdd']);
-Route::post('/them-san-pham', [EUSController::class, 'postAdd']);
-
-Route::prefix('users')->name('users.')->group(function () {
-    Route::get('/', [EUSController::class, 'getUsers'])->name('index');
-    Route::get('/add', [EUSController::class, 'getAddUsers'])->name('addUsers');
-    Route::post('/post', [EUSController::class, 'postAddUsers'])->name('postUsers');
-    Route::get('/edit/{id}', [EUSController::class, 'getEditUsers'])->name('getEditUsers');
-    Route::post('/edit/{id}', [EUSController::class, 'postEditUsers'])->name('postEditUsers');
-    Route::get('/delete/{id}', [EUSController::class, 'deleteUser'])->name('destroy');
+Route::get('/', function () {
+    return 1;
 });
