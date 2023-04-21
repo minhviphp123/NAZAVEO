@@ -6,18 +6,18 @@
 <div class="container">
     <div class="row">
          <div class="col-4" style="margin: 100px auto">
-             <h2>Add User - SignUp</h2>
+             <h2>Login</h2>
              @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
              @endif
-             @if (session('warning'))
-                <div class="alert alert-warning">
-                    {{ session('warning') }}
+             @if (session('danger'))
+                <div class="alert alert-danger">
+                    {{ session('danger') }}
                 </div>
              @endif
-             <form method="POST" action="{{route('post-user')}}">
+             <form method="POST" action="{{route('post-login')}}">
                 @csrf
                <div class="form-group">
                  <label for="username">Username:</label>
@@ -30,22 +30,11 @@
                  <label for="password">Password:</label>
                  <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
                  @error('password')
-                    
-                 <div class="alert alert-danger">{{ $message }}</div>
+                <div class="alert alert-danger">{{ $message }}</div>
                  @enderror
-               </div>
-               <div class="form-group">
-                 <label for="role">Role:</label>
-                 <select class="form-control" id="role" name="role">
-                   <option value="admin">Admin</option>
-                   <option value="user">User</option>
-                 </select>
                </div>
                <button type="submit" class="btn btn-primary">Submit</button>
              </form>
-             <div style="text-align: center;margin-top: 20px">
-                <a href="{{ route('log-in') }}">Login</a>
-             </div>
          </div>
     </div>
    </div>

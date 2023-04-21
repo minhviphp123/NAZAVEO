@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     use HasFactory;
 
@@ -21,10 +22,10 @@ class User extends Model
         'remember_token',
     ];
 
-    // public function setPasswordAttribute($value)
-    // {
-    // $this->attributes['password'] = Hash::make($value);
-    // }
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 
     public function isExistName($username): bool
     {

@@ -3,9 +3,8 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
 
-class CheckSignAndLogin implements Rule
+class EvenNumber implements Rule
 {
     /**
      * Create a new rule instance.
@@ -26,12 +25,7 @@ class CheckSignAndLogin implements Rule
      */
     public function passes($attribute, $value)
     {
-        $credentials = [
-            'username' => request()->name,
-            'password' => request()->password,
-        ];
-
-        return Auth::attempt($credentials);
+        return $value % 2 == 0;
     }
 
     /**
@@ -41,6 +35,6 @@ class CheckSignAndLogin implements Rule
      */
     public function message()
     {
-        return 'The email or password you entered is incorrect.';
+        return 'The validation error message.';
     }
 }

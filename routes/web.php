@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EUSController::class, 'getSignUp'])->name('add-user');
 Route::post('/add-user', [EUSController::class, 'postSignUp'])->name('post-user');
+Route::get('/log-in', [EUSController::class, 'getLogIn'])->name('log-in');
+Route::post('/log-in', [EUSController::class, 'postLogin'])->name('post-login');
