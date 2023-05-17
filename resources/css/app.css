@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Philosopher;
+    src: url('../font/Philosopher-Bold.ttf'), url('../font/Philosopher-BoldItalic.ttf'), url('../font//Philosopher-Italic.ttf'), url('../font/Philosopher-Bold.ttf');
+}
+
+body {
+    color: green;
+}
