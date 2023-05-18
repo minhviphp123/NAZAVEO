@@ -24,19 +24,19 @@ use App\Models\Phone;
 
 class EUSController extends Controller
 {
-    // public function add(): string
-    // {
-    //     for ($i = 1; $i < 11; $i++) {
-    //         Keyboard::create([
-    //             'name' => 'Keyboard ' . $i,
-    //             'description' => 'desc ' . $i,
-    //             'price' => 100000,
-    //             'category_id' => 3,
-    //         ]);
-    //     }
+    public function add(): string
+    {
+        for ($i = 1; $i < 11; $i++) {
+            Phone::create([
+                'name' => 'Phone ' . $i,
+                'description' => 'desc ' . $i,
+                'price' => 100000,
+                'category_id' => 3,
+            ]);
+        }
 
-    //     return "added!";
-    // }
+        return "added!";
+    }
 
     ////////////// vao seeder de biet cach them data va them data nao
 
@@ -63,22 +63,22 @@ class EUSController extends Controller
 
         $name = $request->input('name');
         $password = $request->input('password');
-
-        // if (Auth::attempt(['name' => $name, 'password' => $password])) {
-        //     return 'succeed';
-        // } else {
-        //     return 'failed';
-        // }
         $user = User::where('name', $name)->first();
 
-        if ($user && Hash::check($password, $user->password)) {
-            // User login successful
-            return 1;
+        if ($user) {
+            if (Hash::check($password, $user->password)) {
+                return view('home', compact('user'));
+            } else {
+                session()->flash('password', 'Sai password');
+                return redirect()->back();
+            }
         } else {
-            // User login failed
-            $allUsers = User::all();
-            return $allUsers;
+            session()->flash('name', 'User không tồn tại');
+            return redirect()->back();
         }
+
+        // authUser($name, $password);
         // return $request->all();
+
     }
 }

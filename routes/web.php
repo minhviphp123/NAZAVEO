@@ -20,6 +20,6 @@ use App\Http\Controllers\MainController;
 // Route::get('/login', [EUSController::class, 'getLogin']);
 Route::post('/login', [EUSController::class, 'login'])->name('login');
 
-// Route::get('/addSeeders', [EUSController::class, 'add']);
+Route::get('/addSeeders', [EUSController::class, 'add']);
 
 Route::get('/', [MainController::class, 'home']);

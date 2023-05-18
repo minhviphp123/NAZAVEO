@@ -19,12 +19,14 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
+
+                    @if (isset($categories))
+                        @foreach ($categories as $category)
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
 
 
@@ -52,6 +54,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
+
+                        @if (session('name'))
+                            <div class="alert alert-danger">
+                                {{ session('name') }}
+                            </div>
+                        @endif
+
+                        @if (session('password'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
                         <form method="POST" action="{{ route('login') }}" class="form-login">
                             @csrf
                             <div class="form-group">
@@ -70,15 +85,22 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">
-                                Login
-                            </button>
+                            <div style="display:flex; justify-content:center">
+                                <button type="submit" class="btn btn-primary btn-block" style="margin:10px auto">
+                                    Login
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+
+    @if (isset($user))
+        @dd($user)
+    @endif
+
     <!-- Link to Bootstrap JS file -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
 
@@ -117,26 +139,6 @@
                     alertDanger.remove();
                 });
             }
-
-            // form.innerHTML = `
-        //  <form method="POST" action="{{ route('login') }}" class="form-login">
-        //             @csrf
-        //             <div class="form-group">
-        //                 <label for="username">Username</label>
-        //                 <input type="text" class="form-control" id="username"
-        //                     placeholder="Enter your username" name="name" />
-
-        //             </div>
-        //             <div class="form-group">
-        //                 <label for="password">Password</label>
-        //                 <input type="password" class="form-control" id="password"
-        //                     placeholder="Enter your password" name="password" />
-        //             </div>
-        //             <button type="submit" class="btn btn-primary btn-block">
-        //                 Login
-        //             </button>
-        //         </form>
-        // `
 
         };
 
