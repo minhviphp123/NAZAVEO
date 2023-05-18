@@ -16,9 +16,29 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Hash;
 use Nette\Utils\Json;
+use Illuminate\Support\Facades\DB;
+use App\Models\Keyboard;
+use App\Models\Mouse;
+use App\Models\Category;
+use App\Models\Phone;
 
 class EUSController extends Controller
 {
+    // public function add(): string
+    // {
+    //     for ($i = 1; $i < 11; $i++) {
+    //         Keyboard::create([
+    //             'name' => 'Keyboard ' . $i,
+    //             'description' => 'desc ' . $i,
+    //             'price' => 100000,
+    //             'category_id' => 3,
+    //         ]);
+    //     }
+
+    //     return "added!";
+    // }
+
+    ////////////// vao seeder de biet cach them data va them data nao
 
     public $data = [];
     private $users;
@@ -56,7 +76,8 @@ class EUSController extends Controller
             return 1;
         } else {
             // User login failed
-            return 0;
+            $allUsers = User::all();
+            return $allUsers;
         }
         // return $request->all();
     }
