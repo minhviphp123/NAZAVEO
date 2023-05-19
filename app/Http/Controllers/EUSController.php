@@ -21,22 +21,23 @@ use App\Models\Keyboard;
 use App\Models\Mouse;
 use App\Models\Category;
 use App\Models\Phone;
+use Illuminate\Support\Facades\Redirect;
 
 class EUSController extends Controller
 {
-    public function add(): string
-    {
-        for ($i = 1; $i < 11; $i++) {
-            Phone::create([
-                'name' => 'Phone ' . $i,
-                'description' => 'desc ' . $i,
-                'price' => 100000,
-                'category_id' => 3,
-            ]);
-        }
+    // public function add(): string
+    // {
+    //     for ($i = 1; $i < 11; $i++) {
+    //         Phone::create([
+    //             'name' => 'Phone ' . $i,
+    //             'description' => 'desc ' . $i,
+    //             'price' => 100000,
+    //             'category_id' => 3,
+    //         ]);
+    //     }
 
-        return "added!";
-    }
+    //     return "added!";
+    // }
 
     ////////////// vao seeder de biet cach them data va them data nao
 
@@ -52,33 +53,48 @@ class EUSController extends Controller
         return view('auth.login');
     }
 
-    public function login(authRequest $request)
+    public function login(Request $request)
     {
 
-        $validator = Validator::make($request->all(), $request->rules(), $request->messages());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'password' => 'required|min:4',
+        ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator->errors());
+            // Dữ liệu không hợp lệ
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $name = $request->input('name');
-        $password = $request->input('password');
-        $user = User::where('name', $name)->first();
+        $credentials = $request->only(
+            'name',
+            'password'
+        );
 
-        if ($user) {
-            if (Hash::check($password, $user->password)) {
-                return view('home', compact('user'));
-            } else {
-                session()->flash('password', 'Sai password');
-                return redirect()->back();
-            }
+        if (Auth::attempt($credentials)) {
+            $name = $request->input('name');
+            $user = User::where('name', $name)->first();
+
+            $request->session()->regenerate();
+
+            $id = Auth::id();
+            return Redirect::route('getUser', ['id' => $id]);
         } else {
-            session()->flash('name', 'User không tồn tại');
+            session()->flash('error', 'info!');
             return redirect()->back();
         }
+    }
 
-        // authUser($name, $password);
-        // return $request->all();
+    public function logout(Request $request)
+    {
+        Auth::logout();
 
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
     }
 }
