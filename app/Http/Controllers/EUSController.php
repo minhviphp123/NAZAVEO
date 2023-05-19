@@ -77,7 +77,7 @@ class EUSController extends Controller
             $name = $request->input('name');
             $user = User::where('name', $name)->first();
 
-            $request->session()->regenerate();
+            // $request->session()->regenerate();
 
             $id = Auth::id();
             return Redirect::route('getUser', ['id' => $id]);

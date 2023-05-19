@@ -21,11 +21,16 @@ use App\Http\Controllers\MainController;
 Route::post('/login', [EUSController::class, 'login'])->name('login');
 Route::post('/logout', [EUSController::class, 'logout'])->name('logout');
 // Route::get('/addSeeders', [EUSController::class, 'add']);
-
 Route::get('/', [MainController::class, 'home'])->name('home');
-Route::get('/user/{id}', [MainController::class, 'getUser'])->name('getUser');
-Route::get('/user/{id}', [MainController::class, 'getUser'])->name('getUser');
 
+Route::get('/user/{id}', [MainController::class, 'getUser'])->name('getUser')->middleware('check-user');
 Route::get('/detail-phone/{id}', [MainController::class, 'getDetailPhoneById'])->name('detail-phone');
 Route::get('/detail-mouse/{id}', [MainController::class, 'getDetailMouseById'])->name('detail-mouse');
 Route::get('/detail-keyboard/{id}', [MainController::class, 'getDetailKeyboardById'])->name('detail-keyboard');
+
+// Route::middleware(['check-user'])->group(function () {
+//     Route::get('/user/{id}', [MainController::class, 'getUser'])->name('getUser');
+//     Route::get('/detail-phone/{id}', [MainController::class, 'getDetailPhoneById'])->name('detail-phone');
+//     Route::get('/detail-mouse/{id}', [MainController::class, 'getDetailMouseById'])->name('detail-mouse');
+//     Route::get('/detail-keyboard/{id}', [MainController::class, 'getDetailKeyboardById'])->name('detail-keyboard');
+// });

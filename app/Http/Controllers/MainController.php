@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Phone;
 use App\Models\Mouse;
 use App\Models\Keyboard;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -37,12 +38,14 @@ class MainController extends Controller
         $categories = $this->categories;
         $allProducts = $this->allProducts;
 
-        if ($userId) {
+        if ($userId && $userId == Auth::id()) {
 
             $user = User::find($userId);
 
             return view('home', compact('user', 'categories', 'allProducts'));
         }
+
+        return back();
     }
 
     public function getDetailPhoneById($id)

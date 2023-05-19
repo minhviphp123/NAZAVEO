@@ -58,7 +58,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h2 class="modal-title">Login to your account</h2>
-                        <button type="button" class="close" data-dismiss="modal">
+                        <button type="button" class="close
+                          " data-dismiss="modal">
                             &times;
                         </button>
                     </div>
@@ -148,7 +149,6 @@
             </div>
         </div>
     @endif
-
 
 
     <!-- Link to Bootstrap JS file -->
