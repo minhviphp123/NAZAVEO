@@ -27,9 +27,18 @@ class MainController extends Controller
 
     public function home()
     {
-        // $categories = $this->categories;
+        $categories = $this->categories;
 
-        return view('home');
+        session()->put('categories', $categories);
+        session()->put('n', 1);
+        // session()->put('nums', session()->get('n'));
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $personalPage =  'Trang cá nhân';
+        }
+
+        return view('home', ['categories' => $categories, 'user' => $user ?? null, 'personalPage' => $personalPage ?? null]);
     }
 
     public function getUser($id)
@@ -52,18 +61,57 @@ class MainController extends Controller
     {
         $selectedPhone = Phone::find($id);
 
-        return $selectedPhone;
+        // return $selectedPhone;
+        $user = session()->get('user');
+        $categories = session()->get('categories');
+
+        return view('productItem', compact('selectedPhone', 'user', 'categories'));
     }
+
     public function getDetailMouseById($id)
     {
         $selectedMouse = Mouse::find($id);
 
         return $selectedMouse;
     }
+
     public function getDetailKeyboardById($id)
     {
         $selectedKeyboard = Keyboard::find($id);
 
         return $selectedKeyboard;
+    }
+
+    public function getDetailProductGroupById($id)
+    {
+        // $selectedGroupProduct =;
+        switch ($id) {
+            case 1:
+                $selectedGroupProduct = Phone::all();
+                break;
+
+            case 2:
+                $selectedGroupProduct = Mouse::all();
+
+            default:
+                $selectedGroupProduct = Keyboard::all();
+                break;
+        }
+
+        // $selectedGroupProduct = 
+        return view('groupProductDetail', compact('selectedGroupProduct'));
+    }
+
+    public function addNum()
+    {
+        $n = session()->get('n');
+
+        $n++;
+        // return $n;
+        session()->put('n', $n);
+
+        return session()->get('n');
+
+        return redirect()->back();
     }
 }

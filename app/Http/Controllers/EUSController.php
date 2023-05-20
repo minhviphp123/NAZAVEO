@@ -22,6 +22,8 @@ use App\Models\Mouse;
 use App\Models\Category;
 use App\Models\Phone;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class EUSController extends Controller
 {
@@ -56,6 +58,14 @@ class EUSController extends Controller
     public function login(Request $request)
     {
 
+        Session::put('previousURL', url()->previous());
+        $previousUrl = Session::get('previousURL');
+
+
+
+        // dd($previousUrl);
+
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
             'password' => 'required|min:4',
@@ -80,7 +90,15 @@ class EUSController extends Controller
             // $request->session()->regenerate();
 
             $id = Auth::id();
-            return Redirect::route('getUser', ['id' => $id]);
+            $user = Auth::user();
+            session()->put('user', $user);
+
+            if (Str::contains($previousUrl, 'detail-groupProduct')) {
+                // Do something if the current URL contains "detail"
+                return redirect()->back();
+            }
+            // return Redirect::route('getUser', ['id' => $id]);
+            return redirect()->route('getUser', ['id' => $id]);
         } else {
             session()->flash('error', 'info!');
             return redirect()->back();

@@ -113,7 +113,7 @@
     </nav>
 
 
-    @if (isset($categories))
+    {{-- @if (isset($categories))
         <div
             style="border: 1px solid; 
         width:66%;margin:50px auto;display:flex;
@@ -126,7 +126,7 @@
                 </div>
             @endforeach
         </div>
-    @endif
+    @endif --}}
 
     @if (isset($allProducts))
         <div>

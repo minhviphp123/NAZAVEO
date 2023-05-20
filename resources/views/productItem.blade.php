@@ -26,8 +26,7 @@
                     @if (isset($categories))
                         @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a class="nav-link"
-                                    href="{{ route('detail-groupProduct', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                <a class="nav-link" href="#">{{ $category->name }}</a>
                             </li>
                         @endforeach
                     @endif
@@ -39,7 +38,7 @@
             @if (auth()->check())
                 <div style="display:flex">
                     <i class="fa fa-shopping-cart" style="display:flex; align-items:center"><span
-                            style="font-size: small">{{ session('n') }}</span></i>
+                            style="font-size: small">3</span></i>
                     @if (isset($user))
                         <p class="greeting" style="margin:auto 10px">Hello {{ $user->name }}</p>
                     @endif
@@ -50,12 +49,6 @@
                 </div>
             @else
                 <button class="btn btn-primary" id="loginBtn">LOGIN</button>
-
-                {{-- @if (session('n'))
-                    <i class="fa fa-shopping-cart" style="display:flex; align-items:center"><span
-                            style="font-size: small">{{ session('n') }}</span></i>
-                @endif --}}
-
                 <button class="btn btn-danger">SIGNUP</button>
             @endif
         </div>
@@ -65,8 +58,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h2 class="modal-title">Login to your account</h2>
-                        <button type="button" class="close
-                          " data-dismiss="modal">
+                        <button type="button" class="close" data-dismiss="modal">
                             &times;
                         </button>
                     </div>
@@ -120,52 +112,25 @@
         </div>
     </nav>
 
+    @if (isset($selectedPhone))
+        <div class="container d-flex flex-wrap mx-auto">
+            <div class="p-2 flex-fill w-100">
+                <span>{{ $selectedPhone['name'] }}</span>
+                <span style="border-left:1px solid;padding:5px">{{ $selectedPhone['price'] }}</span>
+                <span>{{ $selectedPhone['category_id'] }}</span>
 
-    {{-- @if (isset($categories))
-        <div
-            style="border: 1px solid; 
-        width:66%;margin:50px auto;display:flex;
-        align-items:center;justify-content:center;
-        padding:20px
-        ">
-            @foreach ($categories as $category)
-                <div style="border:1px solid; width:fit-content;padding:5px;margin:10px;text-align:center">
-                    {{ $category->name }}
-                </div>
-            @endforeach
-        </div>
-    @endif --}}
-
-    @if (isset($allProducts))
-        <div>
-            <div class="container d-flex flex-wrap mx-auto">
-                @foreach ($allProducts as $product)
-                    <div class="p-2 flex-fill w-50">
-                        <span>{{ $product['name'] }}</span>
-                        <span style="border-left:1px solid;padding:5px">{{ $product['price'] }}</span>
-                        <span>{{ $product['category_id'] }}</span>
-
-                        {{-- <i class="fa fa-plus btn btn-primary"></a> --}}
-                        <a href="@if ($product['category_id'] == 1) {{ route('detail-phone', ['id' => $product['id']]) }}
+                {{-- <i class="fa fa-plus btn btn-primary"></a> --}}
+                {{-- <a href="@if ($selectedPhone['category_id'] == 1) {{ route('detail-phone', ['id' => $product['id']]) }}
                                 @elseif($product['category_id'] == 1) {{ route('detail-mouse', ['id' => $product['id']]) }}   
                                 @else {{ route('detail-keyboard', ['id' => $product['id']]) }} @endif
                             "
-                            class="btn btn-primary">Chi tiết</a>
-                    </div>
-                @endforeach
+                    class="btn btn-primary">Chi tiết</a> --}}
+
+                <a href="{{ route('add') }}" class="btn btn-primary">add</a>
             </div>
         </div>
     @endif
 
-    @if (isset($personalPage))
-        <a href="{{ route('getUser', ['id' => Auth::id()]) }}">{{ $personalPage }}</a>
-    @endif
-
-    @if (session()->has('!login-mess'))
-        {{-- <span>{{ session('userId') }}</span> --}}
-        {{-- <p class="greeting" style="margin:auto 10px">Hello {{ session('user')->name }}</p> --}}
-        <div class="not-yet-login" style="display:none">{{ session('!login-mess') }}</div>
-    @endif
 
     <!-- Link to Bootstrap JS file -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
@@ -213,10 +178,6 @@
         if (alertDanger) {
             loginModal.style.display = "block";
 
-        }
-
-        if (document.querySelector('.not-yet-login')) {
-            loginModal.style.display = "block";
         }
     </script>
 
