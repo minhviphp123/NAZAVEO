@@ -27,18 +27,18 @@ class MainController extends Controller
 
     public function home()
     {
-        $categories = $this->categories;
+        // $categories = $this->categories;
 
-        session()->put('categories', $categories);
-        session()->put('n', 1);
+        // session()->put('categories', $categories);
+        // session()->put('n', 1);
         // session()->put('nums', session()->get('n'));
 
-        if (Auth::check()) {
-            $user = Auth::user();
-            $personalPage =  'Trang cá nhân';
-        }
+        // if (Auth::check()) {
+        //     $user = Auth::user();
+        //     $personalPage =  'Trang cá nhân';
+        // }
 
-        return view('home', ['categories' => $categories, 'user' => $user ?? null, 'personalPage' => $personalPage ?? null]);
+        return view('home');
     }
 
     public function getUser($id)
@@ -102,16 +102,35 @@ class MainController extends Controller
         return view('groupProductDetail', compact('selectedGroupProduct'));
     }
 
-    public function addNum()
+    public function addNum($id)
     {
-        $n = session()->get('n');
+        // $n = session()->get('n');
 
-        $n++;
+        // $n++;
         // return $n;
-        session()->put('n', $n);
+        // session()->put('n', $n);
 
-        return session()->get('n');
+        // return session()->get('n');
 
-        return redirect()->back();
+        // return redirect()->back();
+
+        // $qty = (int)null;
+
+        if (session()->has('cart')) {
+            $qty = session()->get('n');
+            $qty++;
+            session()->put('n', $qty);
+            return redirect()->back();
+        } else {
+            $cart = [];
+            $package = [$id => 1];
+            $cart[] = $package;
+            session()->put('cart', $cart);
+            return redirect()->back();
+        }
+        // $qty = 1;
+        // return redirect()->back()->with('qty', $qty);
+
+        // return view('productItem', compact('qty'));
     }
 }

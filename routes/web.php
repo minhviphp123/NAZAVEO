@@ -17,7 +17,7 @@ use App\Http\Controllers\MainController;
 */
 
 
-// Route::get('/login', [EUSController::class, 'getLogin']);
+Route::get('/login', [EUSController::class, 'getLogin']);
 Route::post('/login', [EUSController::class, 'login'])->name('login');
 Route::post('/logout', [EUSController::class, 'logout'])->name('logout');
 // Route::get('/addSeeders', [EUSController::class, 'add']);
@@ -27,15 +27,14 @@ Route::get('/', [MainController::class, 'home'])->name('home');
 // Route::get('/detail-phone/{id}', [MainController::class, 'getDetailPhoneById'])->name('detail-phone');
 // Route::get('/detail-mouse/{id}', [MainController::class, 'getDetailMouseById'])->name('detail-mouse');
 // Route::get('/detail-keyboard/{id}', [MainController::class, 'getDetailKeyboardById'])->name('detail-keyboard');
-Route::get('/detail-groupProduct/{id}', [MainController::class, 'getDetailProductGroupById'])->name('detail-groupProduct');
+// Route::get('/detail-groupProduct/{id}', [MainController::class, 'getDetailProductGroupById'])->name('detail-groupProduct');
 
 Route::middleware(['check-user'])->group(function () {
     Route::get('/user/{id}', [MainController::class, 'getUser'])->name('getUser');
     Route::get('/detail-phone/{id}', [MainController::class, 'getDetailPhoneById'])->name('detail-phone');
     Route::get('/detail-mouse/{id}', [MainController::class, 'getDetailMouseById'])->name('detail-mouse');
     Route::get('/detail-keyboard/{id}', [MainController::class, 'getDetailKeyboardById'])->name('detail-keyboard');
-    // Route::get('/detail-groupProduct/{id}', [MainController::class, 'getDetailProductGroupById'])->name('detail-groupProduct');
-
+    Route::get('/detail-groupProduct/{id}', [MainController::class, 'getDetailProductGroupById'])->name('detail-groupProduct');
 });
 
-Route::get('/add', [MainController::class, 'addNum'])->name('add');
+// Route::get('/add/{id}', [MainController::class, 'addNum'])->name('add');

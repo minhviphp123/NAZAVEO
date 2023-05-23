@@ -17,8 +17,8 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
-                        Login Form
+                    <div class="card-header" style="text-align:center">
+                        Admin
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
@@ -38,7 +38,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary"
+                                    style="display:block;margin:0 auto">Login</button>
                             </div>
                         </form>
                     </div>

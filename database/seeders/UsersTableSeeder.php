@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             DB::table('users')->insert([
                 'name' => 'User ' . ($i + 1),
+                'email' => 'email ' . $i . '@gmail.com',
                 'password' => bcrypt('password'),
             ]);
         }

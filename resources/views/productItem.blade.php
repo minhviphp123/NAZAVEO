@@ -53,7 +53,7 @@
             @endif
         </div>
 
-        <div id="loginModal" class="modal">
+        {{-- <div id="loginModal" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </nav>
 
     @if (isset($selectedPhone))
@@ -126,10 +126,17 @@
                             "
                     class="btn btn-primary">Chi tiết</a> --}}
 
-                <a href="{{ route('add') }}" class="btn btn-primary">add</a>
+                <a href="{{ route('add', ['id' => $selectedPhone['id']]) }}" class="btn btn-primary">add</a>
             </div>
         </div>
     @endif
+
+    @if (session()->has('n'))
+        <span>{{ session('n') }}</span>
+    @else
+        <span>0</span>
+    @endif
+
 
 
     <!-- Link to Bootstrap JS file -->

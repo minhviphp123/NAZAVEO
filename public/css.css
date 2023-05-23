@@ -1,14 +1,12 @@
 @font-face {
     font-family: Philosopher;
-    src: url("./font/Philosopher-Bold.ttf"),
-        url("./font//Philosopher-BoldItalic.ttf"),
-        url("./font//Philosopher-Italic.ttf"),
-        url("./font/Philosopher-Regular.ttf");
+    src: url("./font/Philosopher-Bold.ttf"), url("./font//Philosopher-BoldItalic.ttf"), url("./font//Philosopher-Italic.ttf"), url("./font/Philosopher-Regular.ttf");
 }
 
 body {
     color: green;
     font-family: "Philosopher";
+    padding: 10px;
 }
 
 .ul-header {
@@ -23,7 +21,9 @@ body {
     margin: 0 5px;
 }
 
+
 /* Modal */
+
 .modal {
     display: none;
     position: fixed;
@@ -36,7 +36,9 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+
 /* Modal content */
+
 .modal-content {
     margin: 15% auto;
     padding: 20px;
@@ -45,7 +47,9 @@ body {
     border-radius: 5px;
 }
 
+
 /* Close button */
+
 .close {
     position: absolute;
     top: 0;
@@ -56,7 +60,9 @@ body {
     cursor: pointer;
 }
 
+
 /* Close button on hover */
+
 .close:hover,
 .close:focus {
     color: #000;

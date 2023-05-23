@@ -10,7 +10,7 @@ class User extends Model implements Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'password'];
+    protected $fillable = ['name', 'email', 'password'];
 
     protected $hidden = [
         'password',

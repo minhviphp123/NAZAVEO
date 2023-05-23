@@ -30,11 +30,10 @@ class EUSController extends Controller
     // public function add(): string
     // {
     //     for ($i = 1; $i < 11; $i++) {
-    //         Phone::create([
-    //             'name' => 'Phone ' . $i,
-    //             'description' => 'desc ' . $i,
-    //             'price' => 100000,
-    //             'category_id' => 3,
+    //         User::create([
+    //             'name' => 'User ' . $i,
+    //             'email' => 'email ' . $i . '@gmail.com',
+    //             'password' => bcrypt('password'),
     //         ]);
     //     }
 
@@ -44,7 +43,6 @@ class EUSController extends Controller
     ////////////// vao seeder de biet cach them data va them data nao
 
     public $data = [];
-    private $users;
     public function __construct()
     {
         // 
@@ -57,10 +55,6 @@ class EUSController extends Controller
 
     public function login(Request $request)
     {
-
-        Session::put('previousURL', url()->previous());
-        $previousUrl = Session::get('previousURL');
-
 
 
         // dd($previousUrl);
@@ -83,25 +77,15 @@ class EUSController extends Controller
             'password'
         );
 
+        // return $credentials;
+
         if (Auth::attempt($credentials)) {
-            $name = $request->input('name');
-            $user = User::where('name', $name)->first();
 
-            // $request->session()->regenerate();
-
-            $id = Auth::id();
-            $user = Auth::user();
-            session()->put('user', $user);
-
-            if (Str::contains($previousUrl, 'detail-groupProduct')) {
-                // Do something if the current URL contains "detail"
-                return redirect()->back();
-            }
-            // return Redirect::route('getUser', ['id' => $id]);
-            return redirect()->route('getUser', ['id' => $id]);
+            return 1;
         } else {
-            session()->flash('error', 'info!');
-            return redirect()->back();
+            // session()->flash('error', 'info!');
+            // return redirect()->back();
+            return 0;
         }
     }
 
