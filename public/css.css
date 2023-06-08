@@ -1,9 +1,6 @@
 @font-face {
     font-family: Philosopher;
-    src: url("./font/Philosopher-Bold.ttf"),
-        url("./font//Philosopher-BoldItalic.ttf"),
-        url("./font//Philosopher-Italic.ttf"),
-        url("./font/Philosopher-Regular.ttf");
+    src: url("./font/Philosopher-Bold.ttf"), url("./font//Philosopher-BoldItalic.ttf"), url("./font//Philosopher-Italic.ttf"), url("./font/Philosopher-Regular.ttf");
 }
 
 body {
@@ -11,55 +8,126 @@ body {
     font-family: "Philosopher";
 }
 
-.ul-header {
-    margin-left: 80px;
-}
-
-.user {
-    margin: 0 20px;
-}
-
-.btn {
-    margin: 0 5px;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
+.sidebar {
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-/* Modal content */
-.modal-content {
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    background-color: #fff;
-    border-radius: 5px;
-}
-
-/* Close button */
-.close {
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: #f00;
-    cursor: pointer;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-/* Close button on hover */
-.close:hover,
-.close:focus {
-    color: #000;
+
+/* Thiết lập chiều rộng của phần content */
+
+.content {
+    margin-left: 17%;
+    ;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 5px 11px
+}
+
+.dropdown1 {
+    margin: 10px 0;
+}
+
+tr {
+    padding: 10px;
+}
+
+table {
+    width: 45%;
+    border: 1px solid;
+}
+
+th {
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+}
+
+.product {
+    border: 1px solid;
+    width: 180px;
+    height: 180px;
+}
+
+.img-product {
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+}
+
+.right-detail {
+    margin: 12px 0;
+}
+
+.parentLI {
+    display: block;
+    position: relative;
+    display: flex;
+    margin: auto 10px;
+}
+
+.dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: absolute;
+    top: 77%;
+    left: 0;
+    background-color: #333;
+    padding: 10px;
+}
+
+
+/* .dropdown {} */
+
+.test {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+}
+
+.nameOfChild {
+    display: block;
+    padding: 10px;
     text-decoration: none;
-    cursor: pointer;
+}
+
+.nav ul li:hover>.dropdown {
+    display: block;
+}
+
+.parentLI:hover>.dropdown {
+    display: block;
+}
+
+.test {
+    display: block;
+    margin: 10px 0;
+}
+
+.test .nameOfChild {
+    color: #fff;
+    text-decoration: none;
+}
+
+.test {
+    padding: 0 !important;
+}
+
+.test a {
+    padding: 0 !important;
+}
+
+.test:hover>a {
+    color: red;
 }

@@ -24,6 +24,7 @@ use App\Models\Phone;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use App\Models\Menu;
 
 class EUSController extends Controller
 {
@@ -61,8 +62,6 @@ class EUSController extends Controller
         Session::put('previousURL', url()->previous());
         $previousUrl = Session::get('previousURL');
 
-
-
         // dd($previousUrl);
 
 
@@ -73,6 +72,7 @@ class EUSController extends Controller
 
         if ($validator->fails()) {
             // Dữ liệu không hợp lệ
+            flash('Du lieu khong hop le')->error();
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
@@ -84,24 +84,15 @@ class EUSController extends Controller
         );
 
         if (Auth::attempt($credentials)) {
-            $name = $request->input('name');
-            $user = User::where('name', $name)->first();
+            session()->put('admin-name', $credentials['name']);
+            flash('Dang nhap thanh cong!')->success();
 
-            // $request->session()->regenerate();
-
-            $id = Auth::id();
-            $user = Auth::user();
-            session()->put('user', $user);
-
-            if (Str::contains($previousUrl, 'detail-groupProduct')) {
-                // Do something if the current URL contains "detail"
-                return redirect()->back();
-            }
-            // return Redirect::route('getUser', ['id' => $id]);
-            return redirect()->route('getUser', ['id' => $id]);
+            return redirect()->route('get-admin');
         } else {
-            session()->flash('error', 'info!');
-            return redirect()->back();
+            // session()->flash('error', 'info!');
+            // flash('Du lieu khong hop le')->error();
+
+            return redirect()->back()->with('error', 'dang nhap that bai');
         }
     }
 
@@ -113,6 +104,6 @@ class EUSController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('login');
     }
 }

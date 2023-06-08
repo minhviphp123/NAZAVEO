@@ -6,12 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "brian2694/laravel-toastr": "^5.57",
         "guzzlehttp/guzzle": "^7.2",
+        "laracasts/flash": "^3.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "laravelcollective/html": "^6.4",
+        "mckenziearts/laravel-notify": "^2.4",
         "spatie/laravel-permission": "^5.10"
     },
     "require-dev": {
@@ -29,9 +32,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "files": [
-            "app/helpers.php"
-        ]
+        "files": []
     },
     "autoload-dev": {
         "psr-4": {
