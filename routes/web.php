@@ -69,3 +69,6 @@ Route::prefix('user')->group(function () {
 Route::get('/send-mail', [UserPageController::class, 'sendMail']);
 Route::get('/test-toast', [UserPageController::class, 'showToast']);
 Route::get('/toast', [UserPageController::class, 'toast'])->name('show-toast');
+
+
+Route::get('/get-prods/{id}', [UserPageController::class, 'AJAX'])->name('test-ajax');

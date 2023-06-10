@@ -97,7 +97,10 @@ class UserPageController extends Controller
     {
         $products = Products::where('child_id', $id)->get();
         if ($products) {
-            return view('prodGroup', ['products' => $products]);
+            return view('prodGroup', [
+                'products' => $products,
+                'id' => $id
+            ]);
         }
     }
 
@@ -109,5 +112,17 @@ class UserPageController extends Controller
     public function toast()
     {
         return back()->with('message', 'ok');
+    }
+
+    public function AJAX($id)
+    {
+        // return response()->json([
+        //     'id' => $id,
+        //     'name' => $name
+        // ]);
+        $products = Products::where('child_id', $id)->get();
+        return response()->json([
+            'product' => $products,
+        ]);
     }
 }
