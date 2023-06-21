@@ -1,7 +1,10 @@
 @extends('main')
 @section('content-main')
-    <div style="margin: 20px 40px">
-        <span onclick="alert()">FILTER</span> <input id="myInput" type="text" placeholder="search" style="margin:0 20px">
+    <div class="container">
+        <div style="margin: 20px 0">
+            <span onclick="alert()">FILTER</span> <input id="filterIP" type="text" placeholder="search"
+                style="margin:0 20px">
+        </div>
     </div>
     <div class="container d-flex flex-wrap ctn1">
         {{-- @foreach ($products as $product)
@@ -67,7 +70,7 @@
         /////
 
 
-        var input = document.getElementById("myInput");
+        var input = document.getElementById("filterIP");
         input.addEventListener("input", function(event) {
             let prods3 = [];
             var value = event.target.value;

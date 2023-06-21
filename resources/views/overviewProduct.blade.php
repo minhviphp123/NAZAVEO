@@ -2,7 +2,7 @@
 @section('content-main')
     <div style="margin:30px 0">
         <div class="container d-flex flex-wrap">
-            <h2 style="width:100%">Product Overview</h2>
+            <h2 style="width:100%">All Products</h2>
             <div>
                 {{-- <span>All | </span> <span> New | </span> <span>Old</span> --}}
             </div>
