@@ -35,17 +35,8 @@ $processedMenu = HeaderHelper::headerMenu($menus);
                             <li class="parentLI"><a href="#"
                                     style="display:block;margin:auto 0;  text-decoration: none;
                                 }">{{ $item['parent'][1] }}</a>
-                                <ul class="dropdown">
+                                <ul class="dropdown" style="background: none">
                                     @foreach ($item['child'] as $key => $ele)
-                                        {{-- @dd($ele[1]) --}}
-                                        {{-- @if ($key === 0)
-                                            <li class="test" style="display: none"><a href="" class="indexOfChild"
-                                                    onclick="clickMenu()">{{ $ele }}</a></li>
-                                        @else
-                                            <li class="test"><a href="" class="nameOfChild">{{ $ele }}</a>
-                                            </li>
-                                        @endif --}}
-
                                         <li class="test"><a href="{{ route('group-product', ['id' => $ele[0]]) }}"
                                                 class="nameOfChild">{{ $ele[1] }}</a>
                                         </li>

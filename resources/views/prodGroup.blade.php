@@ -6,19 +6,10 @@
                 style="margin:0 20px">
         </div>
     </div>
-    <div class="container d-flex flex-wrap ctn1">
-        {{-- @foreach ($products as $product)
-            <a href="{{ route('get-prod-detail', ['id' => $product->id]) }}"
-                style="display:block;margin:10px;width:fit-content">
-                <div class="product" style="text-align: center">
-                    <div style="display: none" class="pro-id">{{ $product->id }}</div>
-                    <div style="">
-                        <img class="img-product" src="{{ $product->thumb }}" alt="">
-                    </div>
-                    <div>{{ $product->name }}</div>
-                </div>
-            </a>
-        @endforeach --}}
+    <div class="container d-flex flex-wrap ctn1" style="position:relative;padding-bottom:88px">
+
+    </div>
+    <p style="display: none" class="amount">{{ $amount }}</p>
     </div>
 
     <div style="display:none" class="id">{{ $id }}</div>
@@ -26,12 +17,14 @@
     {{-- <a href="/test-ajax/1/minh">test-ajax</a> --}}
 
     <script>
-        // var name = 'example';
+        var amount = document.querySelector('.amount').innerText;
         var id = document.querySelector('.id').innerText;
         const prodsCtn = document.querySelector('.ctn1');
         let products = [];
         let prods2 = [];
         // Tạo đối tượng XMLHttpRequest
+
+
         var xhr = new XMLHttpRequest();
 
         // Đăng ký hàm xử lý sự kiện khi nhận được kết quả trả về từ API
@@ -67,9 +60,6 @@
         // Gửi yêu cầu tới API
         xhr.send();
 
-        /////
-
-
         var input = document.getElementById("filterIP");
         input.addEventListener("input", function(event) {
             let prods3 = [];
@@ -104,7 +94,6 @@
             }
 
             if (value == '') {
-                // prodsCtn.innerHTML = '';
 
                 for (let index = 0; index < products.length; index++) {
                     const element = products[index];
@@ -121,9 +110,24 @@
                     </a>
                     `
                 }
-                // prodsCtn.innerHTML = '<p>dkm</p>'
 
             }
         });
+
+        setTimeout(() => {
+            console.log(prodsCtn.getElementsByTagName('a').length);
+            console.log(amount);
+            if (prodsCtn.getElementsByTagName('a').length < parseInt(amount)) {
+                prodsCtn.innerHTML = `<button id="load-more1" class="btn btn-primary"
+            style="position:absolute;bottom:1px;left: 50%;
+            transform: translate(-50%, -50%);">Load
+            More</button>`;
+            } else {
+                if (document.querySelector('#load-more1')) {
+                    document.querySelector('#load-more1').style.display = 'none';
+                }
+            }
+        }, 500);
+        // console.log(document.getElementsByClassName('load-more').style.display);
     </script>
 @endsection

@@ -10,6 +10,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^9.19",
+        "laravel/nexmo-notification-channel": "*",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",

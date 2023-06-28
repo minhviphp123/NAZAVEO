@@ -1,14 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EUSController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProductController;
-use  App\Http\Controllers\UserPageController;
-
+use App\Http\Controllers\UserPageController;
+use App\Http\Controllers\BookingConroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +19,12 @@ use  App\Http\Controllers\UserPageController;
 */
 
 
+
+
+// Route::prefix('shop')->group(function () {
 Route::get('/login', [EUSController::class, 'getLogin']);
 Route::post('/login', [EUSController::class, 'login'])->name('login');
-// Route::post('/logout', [EUSController::class, 'logout'])->name('logout');
 Route::get('/logout', [EUSController::class, 'logout'])->name('logout');
-// Route::get('/addSeeders', [EUSController::class, 'add']);
 Route::get('/', [MainController::class, 'home'])->name('home');
 
 Route::get('/detail-groupProduct/{id}', [MainController::class, 'getDetailProductGroupById'])->name('detail-groupProduct');
@@ -62,7 +61,6 @@ Route::prefix('user')->group(function () {
     Route::post('/add-to-cart', [UserPageController::class, 'addToCart'])->name('add-to-cart');
     Route::get('/view-cart', [UserPageController::class, 'viewCart'])->name('view-cart');
     Route::post('/order', [UserPageController::class, 'order'])->name('order');
-
     Route::get('/groupProduct/{id}', [UserPageController::class, 'getGroupProd'])->name('group-product');
 });
 
@@ -70,5 +68,12 @@ Route::get('/send-mail', [UserPageController::class, 'sendMail']);
 Route::get('/test-toast', [UserPageController::class, 'showToast']);
 Route::get('/toast', [UserPageController::class, 'toast'])->name('show-toast');
 
-
 Route::get('/get-prods/{id}', [UserPageController::class, 'AJAX'])->name('test-ajax');
+// });
+Route::get('/get-all-prods', [UserPageController::class, 'getAllProds'])->name('get-all-prods');
+
+Route::prefix('booking')->group(function () {
+    Route::get('/', [BookingConroller::class, 'getHome']);
+});
+
+Route::get('/load-more-products', [UserPageController::class, 'loadMoreProducts'])->name('load-more-products');

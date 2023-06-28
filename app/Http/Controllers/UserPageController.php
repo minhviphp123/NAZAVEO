@@ -6,9 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Jobs\SendMail;
-use App\Mail\OrderShipped;
-use Illuminate\Support\Facades\Mail;
-use Mckenziearts\Notify\Facades\LaravelNotify;
 
 class UserPageController extends Controller
 {
@@ -19,15 +16,20 @@ class UserPageController extends Controller
      */
     public function index()
     {
+        $products = Products::orderBy('id', 'asc')->take(4)->get();
+        $amount = Products::count();
 
-        $products = Products::all();
+        return view('overviewProduct', compact('products', 'amount'));
+    }
 
-        return view('overviewProduct', compact('products'));
+    public function getAllProds()
+    {
+        $allProducts = Products::all();
+        return response()->json(['allProducts' => $allProducts]);
     }
 
     public function getProdById($id)
     {
-
         try {
 
             $product = Products::find($id);
@@ -96,9 +98,11 @@ class UserPageController extends Controller
     public function getGroupProd($id)
     {
         $products = Products::where('child_id', $id)->get();
+        $amount =  Products::where('child_id', $id)->count();
         if ($products) {
             return view('prodGroup', [
                 'products' => $products,
+                'amount' => $amount,
                 'id' => $id
             ]);
         }
@@ -116,13 +120,16 @@ class UserPageController extends Controller
 
     public function AJAX($id)
     {
-        // return response()->json([
-        //     'id' => $id,
-        //     'name' => $name
-        // ]);
         $products = Products::where('child_id', $id)->get();
         return response()->json([
             'product' => $products,
         ]);
+    }
+
+    public function loadMoreProducts(Request $request)
+    {
+        $page = $request->input('page');
+        $products = Products::skip(($page - 1) * 4)->take(4)->get();
+        return response()->json(['products' => $products]);
     }
 }
