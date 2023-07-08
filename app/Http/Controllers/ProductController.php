@@ -155,7 +155,6 @@ class ProductController extends Controller
         $latestFileArray = explode("/", $longLatestFile);
         $latestFile = end($latestFileArray);
         $thumb = $latestFile ? "/images/" . $latestFile : null;
-        // $parentMenu = Menu::where('parent_id', 0)->get();
         if ($product) {
             $product->name = $request->input('prod-name');
             $product->child_id = $request->input('child_id');
