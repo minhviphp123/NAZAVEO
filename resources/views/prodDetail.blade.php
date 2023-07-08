@@ -2,8 +2,23 @@
 @section('content-main')
     <div class="container">
         <div class="row">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="zoom-controls">
+                        <div class="zoom">
+                            <button id="zoom-in">+</button>
+                            <button id="zoom-out">-</button>
+                        </div>
+                    </div>
+                    <img id="modal-image" src="">
+                </div>
+            </div>
             <div class="col-md-6" style="border:1px solid">
-                <div><img src="{{ $product->thumb }}" alt="" style="display: block;margin:0 auto"></div>
+                <div><img id="myImg" src="{{ $product->thumb }}" alt="" style="display: block;margin:0 auto">
+                </div>
             </div>
             <div class="col-md-6" style="border:1px solid;text-align:center">
                 <div class="right-detail">{{ $product->name }}</div>
@@ -38,8 +53,6 @@
     </div>
 
     <script>
-        // console.log(1);
-        // function changeAmount(dec, inc, amount, price, amount2) {
         const decreaseButton = document.querySelector(".decrease");
         const increaseButton = document.querySelector(".increase");
         const amount = document.querySelector(".amount");
@@ -57,7 +70,6 @@
             priceNum -= priceNum1;
             if (count < 1) {
                 count = 1;
-                // priceNum = priceNum1;
             }
 
             if (count == 1) {
@@ -79,13 +91,10 @@
 
         numOfForm.value = amount.innerHTML;
 
-        /////alert
-
-
         if (document.querySelector('.success')) {
             swal({
                 title: "Success",
-                text: "Dat hang thanh cong",
+                text: "Da them vao gio",
                 icon: "success",
                 buttons: true,
                 dangerMode: true
@@ -102,7 +111,7 @@
         if (document.querySelector('.error')) {
             swal({
                 title: "Error",
-                text: "Dat hang that bai",
+                text: "Them that bai",
                 icon: "warning",
                 buttons: true,
                 dangerMode: false
@@ -115,5 +124,53 @@
                 });
             }, 1000);
         }
+
+        //--------------------------------------------------------------------
+        //--------------------------------------------------------------------
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("myImg");
+        var modalImg = document.getElementById("modal-image");
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Zoom in and zoom out functionality
+        var zoomInBtn = document.getElementById("zoom-in");
+        var zoomOutBtn = document.getElementById("zoom-out");
+        var currentZoom = 1;
+
+        zoomInBtn.addEventListener("click", function() {
+            currentZoom += 0.1;
+            if (currentZoom < 1.2) {
+                modalImg.style.transform = "scale(" + currentZoom + ")";
+            } else {
+                currentZoom = 1.2;
+                modalImg.style.transform = "scale(" + currentZoom + ")";
+            }
+        });
+
+        zoomOutBtn.addEventListener("click", function() {
+            currentZoom -= 0.1;
+            modalImg.style.transform = "scale(" + currentZoom + ")";
+            if (currentZoom > 0.8) {
+                modalImg.style.transform = "scale(" + currentZoom + ")";
+            } else {
+                currentZoom = 0.8;
+                modalImg.style.transform = "scale(" + currentZoom + ")";
+            }
+        });
     </script>
 @endsection

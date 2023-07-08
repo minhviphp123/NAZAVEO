@@ -26,7 +26,6 @@
                     @endif
 
                     @foreach ($parentMenu as $item)
-                        {{-- <option value="{{ $item->id }}">{{ $item->name }}</option> --}}
                         @if ($item->id == $menu->parent_id)
                             <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
                         @else
@@ -40,8 +39,6 @@
             </div>
             <div class="form-group">
                                 <label for="mo-ta">Mô tả:</label>
-                                {{-- <textarea class="form-control" id="editor1" rows="3" placeholder="Nhập mô tả" name="desc">{{ $menu->desc }}</textarea> --}}
-
                                 @isset($menu)
                                     <textarea class="form-control" id="editor1" rows="3" placeholder="Nhập mô tả" name="desc">{{ $menu->desc }}</textarea>
                                 @else

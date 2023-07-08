@@ -131,3 +131,94 @@ td {
 .test:hover>a {
     color: red;
 }
+
+
+/* Style the button that opens the modal */
+
+#myBtn {
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #0077cc;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding: 40px 0;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 60%;
+    height: 350px;
+    /* width: 580px; */
+    /* position: relative; */
+    transform: translateY(5px);
+    height: fit-content;
+    padding-bottom: 30px;
+}
+
+
+/* Zoom controls */
+
+.zoom-controls {
+    width: 30%;
+    margin: 60px auto;
+}
+
+.zoom {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
+/* Style the close button */
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 21px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #f1f1f1;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-image {
+    width: 40%;
+    height: 400px;
+    display: block;
+    margin: 0 auto;
+}

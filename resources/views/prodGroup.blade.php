@@ -2,7 +2,7 @@
 @section('content-main')
     <div class="container">
         <div style="margin: 20px 0">
-            <span onclick="alert()">FILTER</span> <input id="filterIP" type="text" placeholder="search"
+            <span onclick="alert()">SEARCH</span> <input id="filterIP" type="text" placeholder="search"
                 style="margin:0 20px">
         </div>
     </div>
@@ -22,9 +22,8 @@
         const prodsCtn = document.querySelector('.ctn1');
         let products = [];
         let prods2 = [];
+
         // Tạo đối tượng XMLHttpRequest
-
-
         var xhr = new XMLHttpRequest();
 
         // Đăng ký hàm xử lý sự kiện khi nhận được kết quả trả về từ API
@@ -33,7 +32,6 @@
                 // Xử lý kết quả trả về
                 products = JSON.parse(this.responseText).product;
                 prods2 = products;
-                // console.log(products[0]);
 
                 for (let index = 0; index < products.length; index++) {
                     const element = products[index];
@@ -61,6 +59,7 @@
         xhr.send();
 
         var input = document.getElementById("filterIP");
+        //event search
         input.addEventListener("input", function(event) {
             let prods3 = [];
             var value = event.target.value;
@@ -71,7 +70,6 @@
                 let element = prods2[index].name.toLowerCase();
 
                 if (element.includes(value) && value !== '') {
-                    console.log(element);
                     prods3.push(prods2[index]);
                 }
             }
@@ -94,7 +92,6 @@
             }
 
             if (value == '') {
-
                 for (let index = 0; index < products.length; index++) {
                     const element = products[index];
                     prodsCtn.innerHTML += `
@@ -113,21 +110,5 @@
 
             }
         });
-
-        setTimeout(() => {
-            console.log(prodsCtn.getElementsByTagName('a').length);
-            console.log(amount);
-            if (prodsCtn.getElementsByTagName('a').length < parseInt(amount)) {
-                prodsCtn.innerHTML = `<button id="load-more1" class="btn btn-primary"
-            style="position:absolute;bottom:1px;left: 50%;
-            transform: translate(-50%, -50%);">Load
-            More</button>`;
-            } else {
-                if (document.querySelector('#load-more1')) {
-                    document.querySelector('#load-more1').style.display = 'none';
-                }
-            }
-        }, 500);
-        // console.log(document.getElementsByClassName('load-more').style.display);
     </script>
 @endsection

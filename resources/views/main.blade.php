@@ -49,7 +49,7 @@ $processedMenu = HeaderHelper::headerMenu($menus);
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav" style="border:1px solid;margin:0 200px">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('view-cart') }}">
+                            <a class="nav-link" href="{{ route('view-cart') }}" style="min-width:49px">
                                 <i class="fa fa-shopping-cart" style=""></i>
 
                                 @if (session('cart'))

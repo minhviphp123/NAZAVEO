@@ -12,19 +12,7 @@
 </head>
 
 <body>
-    {{-- @if (Session::has('message'))
-        <script>
-            Swal("Message", "{{ Session::get('message') }}", "success", {
-                button: true,
-                button: "OK",
-                timer: 3000
-            })
-        </script>
-    @endif --}}
     <h1>Test Toast</h1>
-    {{-- <form action="{{ route('show-toast') }}" method="post" >
-        <button type="submit">GO</button>
-    </form> --}}
 
     <script>
         swal({

@@ -33,10 +33,6 @@
                                     <td class="total{{ $key }} for-test">{{ $item['price'] }}</td>
                                 </tr>
                             @endforeach
-                            {{-- <tr style="border:1px solid">
-                                <td style="border:1px solid;width:70%">Total</td>
-                                <td style="border:1px solid;width:30%">1000$</td>
-                            </tr> --}}
 
                         <tfoot>
                             <tr>
@@ -52,11 +48,8 @@
                                     summary-cart">
                     <div style="width: 95%;padding-left:10px 200px;margin:0 auto;border:1px solid">
                         <div class="container title-cart-ctn">
-                            {{-- <h2>Cart Total</h2> --}}
                         </div>
                         <div class="container total-cart-ctn">
-                            {{-- <span style="margin-right: 16px">Total:</span> --}}
-                            {{-- <span class="total-cart"></span> --}}
                         </div>
                         <div class="container">
                             <h3 style="margin:13px 0 20px 0">Thông tin khách hàng</h3>

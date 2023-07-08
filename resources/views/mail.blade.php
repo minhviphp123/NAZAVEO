@@ -10,8 +10,6 @@
 
 <body>
     <h1>Test Sending Mail</h1>
-    {{-- <img src="https://scontent.fhph1-2.fna.fbcdn.net/v/t1.6435-9/96513018_3279036525460245_8364430246111346688_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=0Z7q9JNH0skAX-aCB3I&_nc_ht=scontent.fhph1-2.fna&oh=00_AfAtLYXXPvTWbapo1IQ5JesIUJ8tExPCRzAKbXkr6m3CiQ&oe=64A245CC"
-        alt=""> --}}
     <img src="https://scontent.fhph1-2.fna.fbcdn.net/v/t1.6435-9/95822764_3279036602126904_5491772586004054016_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=lm24zZUcz4AAX9T4tkD&_nc_ht=scontent.fhph1-2.fna&oh=00_AfAZrsq4x3z5UDiGCDtshkB_ewpCTi-ZssIf77Ba9eOHIw&oe=64A27E02"
         alt="">
 </body>

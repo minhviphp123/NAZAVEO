@@ -14,8 +14,6 @@
             </tr>
         </thead>
 
-        {{-- @dd($products) --}}
-
         <tbody>
             @foreach ($products as $product)
                 <tr>
@@ -36,6 +34,4 @@
 
         </tbody>
     </table>
-
-    {{-- <div>{!! MenuHelper::menu() !!}</div> --}}
 @endsection

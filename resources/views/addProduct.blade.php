@@ -18,8 +18,6 @@
             <div class="form-group">
                 <label for="danh-muc-cha">Danh mục</label>
                 <select class="form-control" id="danh-muc-cha" name="child_id">
-                    {{-- <option value="0">Danh mục cha</option> --}}
-
                     @foreach ($childMenu as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach

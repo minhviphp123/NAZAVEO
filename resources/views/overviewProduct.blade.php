@@ -282,8 +282,6 @@
 
                 if (document.querySelector('.filter-ctn').style.display == 'none') {
                     document.querySelector('.filter-ctn').style.display = 'block';
-                    // document.getElementById('load-more').style.display =
-                    //     'block';
                     prods2 = [];
                     prods2 = products.slice(0, amount2);
 

@@ -42,9 +42,7 @@
 
                 </nav>
             </div>
-            <!-- Phần content bên phải -->
             <div class="col-10 content">
-                <!-- Nội dung của phần content ở đây -->
                 <header style="background: green;">
                     <h1>ADMIN </h1>
                 </header>
