@@ -22,7 +22,6 @@ class checkUserMiddleware
             return $next($request);
         } else {
             // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
-            // return redirect('/login');
             session()->put('!login-mess', 'not yet login');
             return redirect()->route('home');
         }

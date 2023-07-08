@@ -47,7 +47,6 @@ class MenuController extends Controller
 
     public function getAllMenu()
     {
-        // return Menu::orderByDesc('id')->panigate(10);
         return Menu::all();
     }
 
@@ -73,8 +72,6 @@ class MenuController extends Controller
         }
 
         return 'not exist';
-        // Menu::findOrFail($menuID)->delete();
-        // return 'removed';
     }
 
     public function getEdit($menuID)
@@ -89,31 +86,19 @@ class MenuController extends Controller
             'menu' => $menu,   'title' => 'EDIT MENU',
             'adminName' => session()->get('admin-name'),
             'parentMenu' => $parentMenu,
-            // 'menu' => $menu
         ]);
     }
     public function edit(Request $request, $menuID)
     {
-        // $menu = Menu::where('id', $menuID)->first();
         $menu = Menu::findOrFail($menuID);
-        // $parentMenu = Menu::where('parent_id', 0)->get();
         if ($menu) {
             $menu->name = $request->input('dm-name');
             $menu->parent_id = $request->input('parent_id');
             $menu->desc = $request->input('desc');
         }
 
-        // return view('editMenu', [
-        //     'menu' => $menu,   'title' => 'EDIT MENU',
-        //     'adminName' => session()->get('admin-name'),
-        //     'parentMenu' => $parentMenu,
-        //     // 'menu' => $menu
-        // ]);
-
         $menu->save();
 
         return redirect()->route('show-list');
-
-        // return $menuID;
     }
 }

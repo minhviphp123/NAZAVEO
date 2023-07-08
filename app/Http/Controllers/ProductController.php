@@ -35,7 +35,6 @@ class ProductController extends Controller
             'title' => 'ADD MENU',
             'adminName' => session()->get('admin-name'),
             'childMenu' => $childMenu,
-            // 'menu' => $menu
         ]);
     }
 
@@ -70,8 +69,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request->all());
         try {
 
             $longLatestFile = collect(File::glob(public_path('images/*')))

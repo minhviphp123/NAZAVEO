@@ -28,21 +28,6 @@ use App\Models\Menu;
 
 class EUSController extends Controller
 {
-    // public function add(): string
-    // {
-    //     for ($i = 1; $i < 11; $i++) {
-    //         Phone::create([
-    //             'name' => 'Phone ' . $i,
-    //             'description' => 'desc ' . $i,
-    //             'price' => 100000,
-    //             'category_id' => 3,
-    //         ]);
-    //     }
-
-    //     return "added!";
-    // }
-
-    ////////////// vao seeder de biet cach them data va them data nao
 
     public $data = [];
     private $users;
@@ -60,10 +45,6 @@ class EUSController extends Controller
     {
 
         Session::put('previousURL', url()->previous());
-        $previousUrl = Session::get('previousURL');
-
-        // dd($previousUrl);
-
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
@@ -89,9 +70,6 @@ class EUSController extends Controller
 
             return redirect()->route('get-admin');
         } else {
-            // session()->flash('error', 'info!');
-            // flash('Du lieu khong hop le')->error();
-
             return redirect()->back()->with('error', 'dang nhap that bai');
         }
     }

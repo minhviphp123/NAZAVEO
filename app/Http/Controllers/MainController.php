@@ -23,7 +23,6 @@ class MainController extends Controller
 
         session()->put('categories', $categories);
         session()->put('n', 1);
-        // session()->put('nums', session()->get('n'));
 
         if (Auth::check()) {
             $user = Auth::user();

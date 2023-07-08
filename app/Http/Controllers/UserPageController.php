@@ -52,27 +52,22 @@ class UserPageController extends Controller
         if ($prodId && $amount && $price) {
             if (!session()->has('cart')) {
                 $cart = [];
-                // $cart[$prodId] = $amount;
                 $cart[$prodId] = ['amount' => $amount, 'price' => $price];
 
                 session()->put('cart', $cart);
             } else {
                 $cart = session()->get('cart');
                 if (array_key_exists($prodId, $cart)) {
-                    // $cart[$prodId] += $amount;
                     $cart[$prodId]['amount'] += $amount;
                     $cart[$prodId]['price'] += $price;
                 } else {
-                    // $cart[$prodId] = $amount;
                     $cart[$prodId] = ['amount' => $amount, 'price' => $price];
                 }
             }
             session()->put('cart', $cart);
-            // $alert = true;
             return redirect()->back()->with('alert1', 'success');
         }
         return redirect()->back()->with('alert2', 'error');
-        // return 1;
     }
 
     public function viewCart()
@@ -83,7 +78,6 @@ class UserPageController extends Controller
 
     public function order(Request $request)
     {
-        // return  $request->input('email');
         SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
         session()->forget('cart');
         return redirect()->back();
