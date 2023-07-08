@@ -78,9 +78,6 @@ class MenuController extends Controller
     {
         $menu = Menu::where('id', $menuID)->first();
         $parentMenu = Menu::where('parent_id', 0)->get();
-        // if ($menu) {
-        //     dd($menu);
-        // }
 
         return view('editMenu', [
             'menu' => $menu,   'title' => 'EDIT MENU',

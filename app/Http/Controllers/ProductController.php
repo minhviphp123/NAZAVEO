@@ -64,7 +64,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request 
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -164,7 +164,6 @@ class ProductController extends Controller
         }
 
         $product->save();
-        // session()->flash('success', 'update san pham thanh cong');
         return redirect()->route('list-product');
     }
 
