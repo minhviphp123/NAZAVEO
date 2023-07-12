@@ -18,10 +18,8 @@ class checkUserMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            // Người dùng đã đăng nhập, tiếp tục xử lý request
             return $next($request);
         } else {
-            // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
             session()->put('!login-mess', 'not yet login');
             return redirect()->route('home');
         }

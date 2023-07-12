@@ -18,10 +18,6 @@ use App\Http\Controllers\BookingConroller;
 |
 */
 
-
-
-
-// Route::prefix('shop')->group(function () {
 Route::get('/login', [EUSController::class, 'getLogin']);
 Route::post('/login', [EUSController::class, 'login'])->name('login');
 Route::get('/logout', [EUSController::class, 'logout'])->name('logout');
@@ -50,9 +46,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [ProductController::class, 'update'])->name('update-product');
         Route::get('/destroy/{id}', [ProductController::class, 'destroy'])->name('destroy-product');
     });
-
-
-    // Route::post('/upload/services', [UploadController::class, 'store'])->name('upload-thumb');
 });
 
 Route::prefix('user')->group(function () {
